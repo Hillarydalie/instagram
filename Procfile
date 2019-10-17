@@ -1,0 +1,1 @@
+web: gunicorn instant.wsgi --log-file -

@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # first import decouple
 from decouple import config, Csv
-...
+
 #secret_key
 SECRET_KEY = config('SECRET_KEY')
 

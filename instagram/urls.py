@@ -16,7 +16,7 @@ urlpatterns = [
     path('post/new/', main_views.uploadimage, name = "newpost"),
     path('profile/', main_views.profile, name="profile"),
     path('update/',main_views.update_profile,name='update'),
-    re_path(r'^search/$',main_views.searchprofile,name='search'),
+    path('search/',main_views.searchprofile,name='search'),
 ]
 
 

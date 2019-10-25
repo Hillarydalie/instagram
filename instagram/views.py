@@ -46,8 +46,11 @@ def signup(request):
 @login_required
 def profile(request):
     current_user = request.user
-    images = Image.objects.filter(id = current_user.id).all()
-    return render(request, 'profile.html', {"images":images})
+    comment_form = CreateComment(data=request.POST)
+    upload_form = ImageUpload()
+    image = Image.objects.all()
+    comments = Comment.objects.filter(id = current_user.id).all()
+    return render(request, 'profile.html', {"image":image})
 
 @login_required
 def uploadimage(request):
@@ -106,6 +109,6 @@ def searchprofile(request):
     name = request.GET.get('search_user')
     result_user = Profile.search_profiles(name)
     images = Image.search_images(name)
-    return render(request,'searchbar.html',{"users":the_users,"images":images})
+    return render(request,'searchbar.html',{"users":result_user,"images":images})
   else:
     return render(request,'searchbar.html')

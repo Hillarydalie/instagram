@@ -27,14 +27,6 @@ class Profile(models.Model):
     def all_comments(self):
         return self.comments.all()
 
-    # @property
-    # def my_followers(self):
-    #     return self.followers.count()
-
-    # @property
-    # def me_following(self):
-    #     return self._all_following()
-
     @classmethod
     def search_profiles(cls,search_term):
         profiles = cls.objects.filter(user__username__icontains = search_term).all()
@@ -56,12 +48,11 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
-    # @classmethod
-    # def get_images_id(cls, image_id):
-    #     images = cls.objects.get(id=image_id)
-    #     return get_send_file_max_age()
-    # def total_likes(self):
-    #     self.likes.count()
+    @classmethod
+    def search_images(cls, search_term):
+        images = cls.objects.filter(user__username__icontains=search_term)
+        return images
+  
 
 class Comment(models.Model):
     comment = models.CharField(max_length=1000, blank=True)
